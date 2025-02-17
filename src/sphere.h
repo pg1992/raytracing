@@ -28,11 +28,10 @@ public:
                 return false;
         }
 
-        rec = {
-            .t = root,
-            .p = r.at(rec.t),
-            .normal = (rec.p - center) / radius,
-        };
+        rec.t = root;
+        rec.p = r.at(rec.t);
+        vec3 outward_normal = (rec.p - center) / radius;
+        rec.set_face_normal(r, outward_normal);
 
         return true;
     }
