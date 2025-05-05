@@ -1,8 +1,13 @@
+CXX=g++
+CXXFLAGS=-Wall -Wextra -Wpedantic -std=c++23
+
+HEADERS=vec3.h ray.h color.h hittable.h sphere.h camera.h material.h
+
 render.ppm: main.elf
 	./main.elf >render.ppm
 
-main.elf: main.cc vec3.h ray.h color.h hittable.h sphere.h camera.h
-	g++ -Wall -Wextra -Weffc++ -Wpedantic -std=c++23 -o main.elf main.cc
+main.elf: main.cc $(HEADERS)
+	$(CXX) $(CXXFLAGS) -o $@ main.cc
 
 .PHONY: clean
 clean:
